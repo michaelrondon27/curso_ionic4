@@ -8,13 +8,15 @@ import { HomeComponent } from './pages/home/home.component';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     AppRoutingModule,
