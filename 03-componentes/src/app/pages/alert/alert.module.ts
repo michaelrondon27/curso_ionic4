@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { AlertPage } from './alert.page';
 
+// Modules
+import { ComponentsModule } from '../../components/components.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -17,6 +20,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
