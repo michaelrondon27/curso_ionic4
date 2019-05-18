@@ -4,8 +4,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'inicio', loadChildren: './pages/inicio/inicio.module#InicioPageModule' },
+  { path: 'action-sheet', loadChildren: './pages/action-sheet/action-sheet.module#ActionSheetPageModule' },
   { path: 'alert', loadChildren: './pages/alert/alert.module#AlertPageModule' },
-  { path: 'action-sheet', loadChildren: './pages/action-sheet/action-sheet.module#ActionSheetPageModule' }
+  { path: 'avatar', loadChildren: './pages/avatar/avatar.module#AvatarPageModule' },
 ];
 
 @NgModule({
