@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+// Services
+import { DataService } from '../../services/data.service';
+
+// Interfaces
+import { Componente } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +14,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  componentes: Observable<Componente[]>;
 
-  ngOnInit() {}
+  constructor(
+    private dataService: DataService
+  ) { }
+
+  ngOnInit() {
+
+    this.componentes = this.dataService.getMenuOpts();
+
+  }
 
 }
