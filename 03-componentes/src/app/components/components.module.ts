@@ -6,15 +6,18 @@ import { RouterModule } from '@angular/router';
 // Components
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { PopinfoComponent } from './popinfo/popinfo.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    PopinfoComponent
   ],
   exports: [
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    PopinfoComponent
   ],
   imports: [
     CommonModule,
