@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
   { path: 'modal', loadChildren: './pages/modal/modal.module#ModalPageModule' },  { path: 'popover', loadChildren: './pages/popover/popover.module#PopoverPageModule' },
   { path: 'progress-bar', loadChildren: './pages/progress-bar/progress-bar.module#ProgressBarPageModule' },
+  { path: 'refresher', loadChildren: './pages/refresher/refresher.module#RefresherPageModule' },
 
 ];
 
