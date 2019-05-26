@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'list-reorder', loadChildren: './pages/list-reorder/list-reorder.module#ListReorderPageModule' },
   { path: 'loading', loadChildren: './pages/loading/loading.module#LoadingPageModule' },
   { path: 'modal', loadChildren: './pages/modal/modal.module#ModalPageModule' },  { path: 'popover', loadChildren: './pages/popover/popover.module#PopoverPageModule' },
+  { path: 'progress-bar', loadChildren: './pages/progress-bar/progress-bar.module#ProgressBarPageModule' },
 
 ];
 
