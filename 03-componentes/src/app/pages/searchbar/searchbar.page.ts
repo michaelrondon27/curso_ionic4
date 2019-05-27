@@ -12,6 +12,8 @@ export class SearchbarPage implements OnInit {
 
   albumnes: any[] = [];
 
+  textoBuscar = '';
+
   constructor(
     private dataService: DataService
   ) { }
@@ -30,7 +32,7 @@ export class SearchbarPage implements OnInit {
 
   buscar( event ) {
 
-    console.log(event);
+    this.textoBuscar = event.detail.value;
 
   }
 

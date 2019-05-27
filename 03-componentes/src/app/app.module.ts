@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Modules
 import { ComponentsModule } from './components/components.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    PipesModule
   ],
   providers: [
     StatusBar,

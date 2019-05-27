@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { SearchbarPage } from './searchbar.page';
 
+// Modules
+import { PipesModule } from '../../pipes/pipes.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     RouterModule.forChild(routes)
   ],
   declarations: [SearchbarPage]

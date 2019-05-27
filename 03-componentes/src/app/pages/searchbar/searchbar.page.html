@@ -12,7 +12,7 @@
 
 <ion-content>
     <ion-list>
-        <ion-item *ngFor="let albumn of albumnes">
+        <ion-item *ngFor="let albumn of albumnes | filtro: textoBuscar: 'title'">
             {{ albumn.title }}
         </ion-item>
     </ion-list>
