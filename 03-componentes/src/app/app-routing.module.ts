@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'progress-bar', loadChildren: './pages/progress-bar/progress-bar.module#ProgressBarPageModule' },
   { path: 'refresher', loadChildren: './pages/refresher/refresher.module#RefresherPageModule' },
   { path: 'searchbar', loadChildren: './pages/searchbar/searchbar.module#SearchbarPageModule' },
+  { path: 'segment', loadChildren: './pages/segment/segment.module#SegmentPageModule' },
 
 ];
 

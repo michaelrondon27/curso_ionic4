@@ -92,5 +92,10 @@
         "icon": "search",
         "name": "Searchbar",
         "redirectTo": "/searchbar"
+    },
+    {
+        "icon": "copy",
+        "name": "Segment",
+        "redirectTo": "/segment"
     }
 ]
