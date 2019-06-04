@@ -21,11 +21,11 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
 
-    this.noticiasService.getTopHeadlines().subscribe( resp => {
+    // this.noticiasService.getTopHeadlines().subscribe( resp => {
 
-      this.noticias.push( ...resp.articles );
+    //   this.noticias.push( ...resp.articles );
 
-    });
+    // });
 
   }
 
