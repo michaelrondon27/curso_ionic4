@@ -4,6 +4,9 @@ import { IonSegment } from '@ionic/angular';
 // Services
 import { NoticiasService } from '../../services/noticias.service';
 
+// Interfaces
+import { Article } from '../../interfaces/interfaces';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -21,6 +24,8 @@ export class Tab2Page implements OnInit {
     'technology'
   ];
 
+  noticias: Article[] = [];
+
   @ViewChild(IonSegment) segment: IonSegment;
 
   constructor(
@@ -31,9 +36,23 @@ export class Tab2Page implements OnInit {
 
     this.segment.value = this.categorias[0];
 
-    this.noticiasService.getTopHeadlinesCategoria( this.categorias[0] ).subscribe( resp => {
+    this.cargarNoticias( this.categorias[0] );
 
-      console.log(resp);
+  }
+
+  cambioCategoria( event ) {
+
+    this.noticias = [];
+
+    this.cargarNoticias( event.detail.value );
+
+  }
+
+  cargarNoticias( categoria ) {
+
+    this.noticiasService.getTopHeadlinesCategoria( categoria ).subscribe( resp => {
+
+      this.noticias.push( ...resp.articles );
 
     });
 
