@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    InAppBrowser
+    InAppBrowser,
+    SocialSharing
   ],
   bootstrap: [AppComponent]
 })
