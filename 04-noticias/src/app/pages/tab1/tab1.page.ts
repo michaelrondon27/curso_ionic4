@@ -21,9 +21,37 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
 
+    this.cargarNoticias();
+
+  }
+
+  loadData( event ) {
+
+    this.cargarNoticias( event );
+
+  }
+
+  cargarNoticias( event? ) {
+
     this.noticiasService.getTopHeadlines().subscribe( resp => {
 
+      if ( resp.articles.length === 0 ) {
+
+        event.target.disabled = true;
+
+        event.target.complete();
+
+        return;
+
+      }
+
       this.noticias.push( ...resp.articles );
+
+      if ( event ) {
+
+        event.target.complete();
+
+      }
 
     });
 
