@@ -40,7 +40,7 @@ export class DataLocalService {
     if ( favoritos ) {
 
       this.noticias = favoritos;
-      
+
     }
 
   }
