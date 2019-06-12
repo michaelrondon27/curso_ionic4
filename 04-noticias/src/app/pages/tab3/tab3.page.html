@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Favotitos
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark">
+    <app-noticias [noticias]="dataLocalStorage.noticias"></app-noticias>
+</ion-content>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+// Services
+import { DataLocalService } from '../../services/data-local.service';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -7,6 +10,8 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(
+    private dataLocalStorage: DataLocalService
+  ) {}
 
 }
