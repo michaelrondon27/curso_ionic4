@@ -6,6 +6,9 @@ import { ActionSheetController } from '@ionic/angular';
 // Interfaces
 import { Article } from '../../interfaces/interfaces';
 
+// Services
+import { DataLocalService } from '../../services/data-local.service';
+
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.component.html',
@@ -19,7 +22,8 @@ export class NoticiaComponent implements OnInit {
   constructor(
     private iab: InAppBrowser,
     private actionSheetCtrl: ActionSheetController,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private dataLocalService: DataLocalService
   ) { }
 
   ngOnInit() {}
@@ -54,7 +58,7 @@ export class NoticiaComponent implements OnInit {
           icon: 'star',
           cssClass: 'action-dark',
           handler: () => {
-            console.log('Favorito');
+            this.dataLocalService.guardarNoticia( this.noticia );
           }
         },
         {
