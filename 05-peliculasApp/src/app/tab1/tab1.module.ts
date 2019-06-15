@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { PipesModule } from '../pipes/pipes.module';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
+    ComponentsModule,
     FormsModule,
     PipesModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
