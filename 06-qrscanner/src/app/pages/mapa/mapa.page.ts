@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+declare var mapboxgl: any;
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.page.html',
   styleUrls: ['./mapa.page.scss'],
 })
-export class MapaPage implements OnInit {
+export class MapaPage implements OnInit, AfterViewInit {
 
   lat: number;
 
@@ -27,6 +29,16 @@ export class MapaPage implements OnInit {
     this.lng = Number(geo[1]);
 
     console.log(this.lat, this.lng);
+
+  }
+
+  ngAfterViewInit() {
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoibXJvbmRvbjcyIiwiYSI6ImNqeGJyNnVhYzA3MWwzeXBlaHlzc3ZleG4ifQ.TwvVQCK3WtQFEVKGdEp1kg';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11'
+    });
 
   }
 
