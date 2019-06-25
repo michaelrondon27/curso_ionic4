@@ -28,8 +28,6 @@ export class MapaPage implements OnInit, AfterViewInit {
     this.lat = Number(geo[0]);
     this.lng = Number(geo[1]);
 
-    console.log(this.lat, this.lng);
-
   }
 
   ngAfterViewInit() {

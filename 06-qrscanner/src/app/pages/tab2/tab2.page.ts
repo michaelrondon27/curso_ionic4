@@ -15,7 +15,7 @@ export class Tab2Page {
 
   enviarCorreo() {
 
-    console.log('enviando correo');
+    this.dataLocalService.enviarCorreo();
 
   }
 
