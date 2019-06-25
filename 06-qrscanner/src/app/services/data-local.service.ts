@@ -43,7 +43,7 @@ export class DataLocalService {
 
   abrirRegistro( registro: Registro ) {
 
-    this.navCtrl.navigateForward('/tabs/tabs2');
+    this.navCtrl.navigateForward('/tabs/tab2');
 
     switch ( registro.type ) {
 
@@ -52,6 +52,7 @@ export class DataLocalService {
         break;
 
       case 'geo':
+        this.navCtrl.navigateForward(`/tabs/tab2/mapa/${ registro.text }`);
         break;
 
       default:
