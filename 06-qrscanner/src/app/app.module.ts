@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot()
   ],
   providers: [
     BarcodeScanner,
