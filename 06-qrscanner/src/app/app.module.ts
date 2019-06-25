@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     BarcodeScanner,
+    InAppBrowser,
     SplashScreen,
     StatusBar,
     {
