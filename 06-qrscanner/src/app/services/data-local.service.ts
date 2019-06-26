@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { File } from '@ionic-native/file/ngx';
 import { Registro } from '../models/registro.model';
 
 @Injectable({
@@ -14,7 +15,8 @@ export class DataLocalService {
   constructor(
     private storage: Storage,
     private navCtrl: NavController,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private file: File
   ) {
 
     this.cargarStorage();
@@ -77,7 +79,33 @@ export class DataLocalService {
 
     });
 
-    console.log(arrTemp.join(''));
+    this.crearArchivoFisico( arrTemp.join('') );
+
+  }
+
+  crearArchivoFisico( text: string ) {
+
+    this.file.checkFile( this.file.dataDirectory, 'registros.csv' ).then( existe => {
+
+      console.log('Existe archivo?', existe);
+
+      return this.escribirEnArchivo( text );
+
+    }).catch( err => {
+
+      return this.file.createFile( this.file.dataDirectory, 'registros.csv', false )
+                        .then( creado => this.escribirEnArchivo( text ) )
+                        .catch( err2 => console.log('No se pudo crear el archivo') );
+
+    });
+
+  }
+
+  async escribirEnArchivo( text: string ) {
+
+    await this.file.writeExistingFile( this.file.dataDirectory, 'registros.csv', text );
+
+    console.log(this.file.dataDirectory + '/registros.csv');
 
   }
 }
