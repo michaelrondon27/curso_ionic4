@@ -118,8 +118,8 @@ export class DataLocalService {
       attachments: [
         archivo
       ],
-      subject: 'Cordova Icons',
-      body: 'How are you? Nice greetings from Leipzig',
+      subject: 'Backup de scans',
+      body: 'Aqui tienen sus backups de sus scans - ScanApp',
       isHtml: true
     };
 
