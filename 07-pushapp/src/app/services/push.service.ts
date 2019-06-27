@@ -1,22 +1,24 @@
-import { Injectable } from '@angular/core';
-import { OneSignal, OSNotification } from '@ionic-native/onesignal/ngx';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { OneSignal, OSNotification, OSNotificationPayload } from '@ionic-native/onesignal/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PushService {
 
-  mensajes: any[] = [
-    {
-      title: 'Titulo del psuh',
-      body: 'Este es el body del push',
-      date: new Date()
-    }
-  ];
+  mensajes: OSNotificationPayload[] = [];
+
+  pushListener = new EventEmitter<OSNotificationPayload>();
 
   constructor(
-    private oneSignal: OneSignal
-  ) { }
+    private oneSignal: OneSignal,
+    private storage: Storage
+  ) {
+
+    this.cargarMensajes();
+
+  }
 
   configuracionInicial() {
 
@@ -38,7 +40,9 @@ export class PushService {
 
   }
 
-  notificacionRecibida( noti: OSNotification ) {
+  async notificacionRecibida( noti: OSNotification ) {
+
+    await this.cargarMensajes();
 
     const payload = noti.payload;
 
@@ -49,6 +53,30 @@ export class PushService {
     }
 
     this.mensajes.unshift( payload );
+
+    this.pushListener.emit( payload );
+
+    this.guardarMensajes();
+
+  }
+
+  guardarMensajes() {
+
+    this.storage.set('mensajes', this.mensajes);
+
+  }
+
+  async cargarMensajes() {
+
+    this.mensajes = await this.storage.get('mensajes') || [];
+
+  }
+
+  async getMensajes() {
+
+    await this.cargarMensajes();
+
+    return [...this.mensajes];
 
   }
 }
