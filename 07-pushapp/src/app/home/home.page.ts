@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   mensajes: OSNotificationPayload[] = [];
 
   constructor(
-    private pushService: PushService,
+    public pushService: PushService,
     private applicationRef: ApplicationRef
   ) {}
 
