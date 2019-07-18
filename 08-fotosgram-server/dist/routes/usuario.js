@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const usuario_model_1 = require("../models/usuario.model");
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const token_1 = __importDefault(require("../classes/token"));
+const autenticacion_1 = require("../middlewares/autenticacion");
 const userRoutes = express_1.Router();
 // Login
 userRoutes.post('/login', (req, res) => {
@@ -20,9 +22,15 @@ userRoutes.post('/login', (req, res) => {
             });
         }
         if (userDB.compararPassword(body.password)) {
+            const tokenUser = token_1.default.getJwtToken({
+                _id: userDB.id,
+                nombre: userDB.nombre,
+                email: userDB.email,
+                avatar: userDB.avatar
+            });
             return res.json({
                 ok: true,
-                token: 'ADSNSLFNASLKFNSALKNFAS'
+                token: tokenUser
             });
         }
         else {
@@ -42,15 +50,28 @@ userRoutes.post('/create', (req, res) => {
         avatar: req.body.avatar
     };
     usuario_model_1.Usuario.create(user).then(userDB => {
-        res.json({
+        const tokenUser = token_1.default.getJwtToken({
+            _id: userDB.id,
+            nombre: userDB.nombre,
+            email: userDB.email,
+            avatar: userDB.avatar
+        });
+        return res.json({
             ok: true,
-            userDB
+            token: tokenUser
         });
     }).catch(err => {
         res.json({
             ok: false,
             err
         });
+    });
+});
+// Actualizar un usuario
+userRoutes.post('/update', autenticacion_1.verificaToken, (req, res) => {
+    res.json({
+        ok: true,
+        usuario: req.usuario
     });
 });
 exports.default = userRoutes;

@@ -1,6 +1,8 @@
 import { Router, Request, Response, response } from "express";
 import { Usuario } from '../models/usuario.model';
 import bcrypt from 'bcrypt';
+import Token from '../classes/token';
+import { verificaToken } from '../middlewares/autenticacion';
 
 const userRoutes = Router();
 
@@ -24,9 +26,16 @@ userRoutes.post('/login', (req: Request, res: Response) => {
 
         if ( userDB.compararPassword( body.password ) ) {
 
+            const tokenUser = Token.getJwtToken({
+                _id: userDB.id,
+                nombre: userDB.nombre,
+                email: userDB.email,
+                avatar:userDB.avatar
+            });
+
             return res.json({
                 ok: true,
-                token: 'ADSNSLFNASLKFNSALKNFAS'
+                token: tokenUser
             });
 
         } else {
@@ -54,9 +63,16 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 
     Usuario.create( user ).then( userDB => {
 
-        res.json({
+        const tokenUser = Token.getJwtToken({
+            _id: userDB.id,
+            nombre: userDB.nombre,
+            email: userDB.email,
+            avatar:userDB.avatar
+        });
+
+        return res.json({
             ok: true,
-            userDB
+            token: tokenUser
         });
 
     }).catch( err => {
@@ -66,6 +82,16 @@ userRoutes.post('/create', (req: Request, res: Response) => {
             err
         });
 
+    });
+
+});
+
+// Actualizar un usuario
+userRoutes.post('/update', verificaToken, (req: any, res: Response) => {
+
+    res.json({
+        ok: true,
+        usuario: req.usuario
     });
 
 });
