@@ -1,9 +1,48 @@
-import { Router, Request, Response } from "express";
+import { Router, Request, Response, response } from "express";
 import { Usuario } from '../models/usuario.model';
 import bcrypt from 'bcrypt';
 
 const userRoutes = Router();
 
+// Login
+userRoutes.post('/login', (req: Request, res: Response) => {
+
+    const body = req.body;
+
+    Usuario.findOne({ email: body.email }, (err, userDB) => {
+
+        if( err ) throw err;
+
+        if ( !userDB ) {
+
+            return res.json({
+                ok: false,
+                mensaje: 'Usuario/contraseña no son correctos'
+            });
+
+        }
+
+        if ( userDB.compararPassword( body.password ) ) {
+
+            return res.json({
+                ok: true,
+                token: 'ADSNSLFNASLKFNSALKNFAS'
+            });
+
+        } else {
+
+            return res.json({
+                ok: false,
+                mensaje: 'Usuario/contraseña no son correctos ***'
+            });
+
+        }
+
+    });
+
+});
+
+// Crear un usuario
 userRoutes.post('/create', (req: Request, res: Response) => {
 
     const user = {
