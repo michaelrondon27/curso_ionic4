@@ -38,6 +38,8 @@ postRoutes.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
 postRoutes.post('/', [autenticacion_1.verificaToken], (req, res) => {
     const body = req.body;
     body.usuario = req.usuario._id;
+    const imagenes = fileSystem.imagenesDeTempHaciaPost(req.usuario._id);
+    body.imgs = imagenes;
     post_model_1.Post.create(body).then((postDB) => __awaiter(this, void 0, void 0, function* () {
         yield postDB.populate('usuario', '-password').execPopulate();
         res.json({
