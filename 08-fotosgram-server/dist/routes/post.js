@@ -80,4 +80,10 @@ postRoutes.post('/upload', [autenticacion_1.verificaToken], (req, res) => __awai
         file: file.mimetype
     });
 }));
+postRoutes.get('/imagen/:userid/:img', (req, res) => {
+    const userId = req.params.userid;
+    const img = req.params.img;
+    const pathFoto = fileSystem.getFotoUrl(userId, img);
+    res.sendFile(pathFoto);
+});
 exports.default = postRoutes;
