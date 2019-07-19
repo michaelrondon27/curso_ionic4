@@ -9,10 +9,21 @@ const uniqid_1 = __importDefault(require("uniqid"));
 class FileSystem {
     constructor() { }
     guardarImagenTemporal(file, userId) {
-        // Crear carpetas
-        const path = this.crearCarpetaUsuario(userId);
-        // Nombre archivo
-        const nombreArchivo = this.generarNombreUnico(file.name);
+        return new Promise((resolve, reject) => {
+            // Crear carpetas
+            const path = this.crearCarpetaUsuario(userId);
+            // Nombre archivo
+            const nombreArchivo = this.generarNombreUnico(file.name);
+            // Mover el archivo del Temp a nuestra carpeta
+            file.mv(`${path}/${nombreArchivo}`, (err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve();
+                }
+            });
+        });
     }
     generarNombreUnico(nombreOriginal) {
         const nombreArr = nombreOriginal.split('.');

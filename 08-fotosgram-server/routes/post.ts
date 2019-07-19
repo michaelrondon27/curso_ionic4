@@ -59,7 +59,7 @@ postRoutes.post('/', [ verificaToken ], (req: any, res: Response) => {
 });
 
 // Servicio para subir archivos
-postRoutes.post('/upload', [ verificaToken ], (req: any, res: Response) => {
+postRoutes.post('/upload', [ verificaToken ], async (req: any, res: Response) => {
 
     if ( !req.files ) {
 
@@ -90,7 +90,7 @@ postRoutes.post('/upload', [ verificaToken ], (req: any, res: Response) => {
 
     }
 
-    fileSystem.guardarImagenTemporal( file, req.usuario._id );
+    await fileSystem.guardarImagenTemporal( file, req.usuario._id );
 
     res.json({
         ok: true,
