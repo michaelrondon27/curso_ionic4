@@ -16,7 +16,13 @@ export class PostsService {
     private http: HttpClient
   ) { }
 
-  getPosts() {
+  getPosts( pull: boolean = false ) {
+
+    if ( pull ) {
+
+      this.paginaPosts = 0;
+
+    }
 
     this.paginaPosts ++;
 
