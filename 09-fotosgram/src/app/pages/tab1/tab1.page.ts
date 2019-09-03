@@ -17,9 +17,27 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
 
+    this.siguientes();
+
+  }
+
+  siguientes( event? ) {
+
     this.postsService.getPosts().subscribe( resp => {
 
       this.posts.push( ...resp.posts );
+
+      if ( event ) {
+
+        event.target.complete();
+
+        if ( resp.posts.length === 0 ) {
+
+          event.target.disabled = true;
+
+        }
+
+      }
 
     });
 
