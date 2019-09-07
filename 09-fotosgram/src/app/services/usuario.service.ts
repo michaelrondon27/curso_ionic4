@@ -21,11 +21,38 @@ export class UsuarioService {
 
     const data = { email, password };
 
-    this.http.post( `${ URL }/user/login`, data ).subscribe( resp => {
+    return new Promise( resolve => {
 
-      console.log(resp);
+      this.http.post( `${ URL }/user/login`, data ).subscribe( resp => {
+
+        if ( resp['ok'] ) {
+
+          this.guardarToken( resp['token'] );
+
+          resolve(true);
+
+        } else {
+
+          this.token = null;
+
+          this.storage.clear();
+
+          resolve(false);
+
+        }
+
+      });
 
     });
+
+
+  }
+
+  async guardarToken( token: string ) {
+
+    this.token = token;
+
+    await this.storage.set( 'token', token );
 
   }
 }
