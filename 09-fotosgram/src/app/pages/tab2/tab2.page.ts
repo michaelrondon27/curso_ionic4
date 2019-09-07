@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-tab2',
@@ -9,8 +10,20 @@ export class Tab2Page {
 
   tempImages: string[] = [];
 
-  constructor() {}
+  post = {
+    mensaje: '',
+    coords: null,
+    posicion: false
+  };
 
-  crearPost() {}
+  constructor(
+    private postService: PostsService
+  ) {}
+
+  crearPost() {
+
+    this.postService.crearPost( this.post );
+
+  }
 
 }
