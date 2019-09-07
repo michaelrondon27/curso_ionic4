@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  tempImages: string[] = [];
+
   constructor() {}
+
+  crearPost() {}
 
 }
