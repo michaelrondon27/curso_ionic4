@@ -14,7 +14,7 @@ export class UsuarioService {
 
   token: string = null;
 
-  usuario: Usuario = {};
+  private usuario: Usuario = {};
 
   constructor(
     private http: HttpClient,
@@ -78,6 +78,18 @@ export class UsuarioService {
       });
 
     });
+
+  }
+
+  getUsuario() {
+
+    if ( !this.usuario._id ) {
+
+      this.validaToken();
+
+    }
+
+    return { ...this.usuario };
 
   }
 
