@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IonSlides, NavController } from '@ionic/angular';
 import { UsuarioService } from '../../services/usuario.service';
+import { UIServiceService } from '../../services/uiservice.service';
 
 @Component({
   selector: 'app-login',
@@ -58,7 +59,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private uiService: UIServiceService
   ) { }
 
   ngOnInit() {
@@ -79,7 +81,7 @@ export class LoginPage implements OnInit {
 
     } else {
 
-      // mostrar alerta de usuario y contraseña no correctas
+      this.uiService.alertaInformativa( 'Usuario y contraseña no son correctos.' );
 
     }
 
