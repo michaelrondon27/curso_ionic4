@@ -26,6 +26,7 @@ export class UIServiceService {
 
     const toast = await this.toastCtrl.create({
       message,
+      position: 'top',
       duration: 1500
     });
 
