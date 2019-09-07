@@ -54,23 +54,23 @@
           </ion-col>
         </ion-row>
         
-        <form (ngSubmit)="registro( fReistro )" #fReistro="ngForm">
+        <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
           <ion-row>
             <ion-col>
               <ion-list>
                 <ion-item>
                   <ion-label>Email</ion-label>
-                  <ion-input name="email" type="email" required></ion-input>
+                  <ion-input name="email" type="email" required [(ngModel)]="registerUser.email"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label>Nombre</ion-label>
-                  <ion-input name="nombre" type="text" required></ion-input>
+                  <ion-input name="nombre" type="text" required [(ngModel)]="registerUser.nombre"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label>Password</ion-label>
-                  <ion-input name="password" type="password" required></ion-input>
+                  <ion-input name="password" type="password" required [(ngModel)]="registerUser.password"></ion-input>
                 </ion-item>
               </ion-list>
             </ion-col>
