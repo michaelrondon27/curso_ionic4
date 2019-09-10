@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
 import { Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
+declare var window: any;
 
 @Component({
   selector: 'app-tab2',
@@ -24,7 +26,8 @@ export class Tab2Page {
   constructor(
     private postService: PostsService,
     private router: Router,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private camera: Camera
   ) {}
 
   async crearPost() {
@@ -66,6 +69,29 @@ export class Tab2Page {
     }).catch((error) => {
 
       this.cargandoGeo = false;
+
+    });
+
+  }
+
+  camara() {
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    };
+
+    this.camera.getPicture(options).then( (imageData) => {
+
+      const img = window.Ionic.WebView.convertFileSrc( imageData );
+
+      this.tempImages.push( img );
+
+    }, (err) => {
 
     });
 

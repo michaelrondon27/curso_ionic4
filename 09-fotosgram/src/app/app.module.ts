@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { Camera } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     IonicStorageModule.forRoot()
   ],
   providers: [
+    Camera,
     Geolocation,
     StatusBar,
     SplashScreen,
