@@ -40,6 +40,8 @@ export class Tab2Page {
       posicion: false
     };
 
+    this.tempImages = [];
+
     this.router.navigateByUrl('/main/tabs/tab1');
 
   }
