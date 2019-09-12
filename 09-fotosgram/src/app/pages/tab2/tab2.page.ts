@@ -24,15 +24,15 @@ export class Tab2Page {
   tempImages: string[] = [];
 
   constructor(
-    private postService: PostsService,
+    private postsService: PostsService,
     private router: Router,
     private geolocation: Geolocation,
-    private camera: Camera
+    private camera: Camera,
   ) {}
 
   async crearPost() {
 
-    const creado = await this.postService.crearPost( this.post );
+    const creado = await this.postsService.crearPost( this.post );
 
     this.post = {
       mensaje: '',
@@ -109,6 +109,8 @@ export class Tab2Page {
     this.camera.getPicture(options).then( (imageData) => {
 
       const img = window.Ionic.WebView.convertFileSrc( imageData );
+
+      this.postsService.subirImagen( imageData );
 
       this.tempImages.push( img );
 

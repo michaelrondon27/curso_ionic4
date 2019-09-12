@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   providers: [
     Camera,
     Geolocation,
+    FileTransfer,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
