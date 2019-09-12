@@ -28,11 +28,11 @@ export class UsuarioService {
 
     return new Promise( resolve => {
 
-      this.http.post( `${ URL }/user/login`, data ).subscribe( resp => {
+      this.http.post( `${ URL }/user/login`, data ).subscribe( async resp => {
 
         if ( resp['ok'] ) {
 
-          this.guardarToken( resp['token'] );
+          await this.guardarToken( resp['token'] );
 
           resolve(true);
 
@@ -50,6 +50,17 @@ export class UsuarioService {
 
     });
 
+  }
+
+  logout() {
+
+    this.token = null;
+
+    this.usuario = null;
+
+    this.storage.clear();
+
+    this.navCtrl.navigateRoot('/login', { animated: true });
 
   }
 
@@ -57,11 +68,11 @@ export class UsuarioService {
 
     return new Promise( resolve => {
 
-      this.http.post(`${ URL }/user/create`, usuario ).subscribe( resp => {
+      this.http.post(`${ URL }/user/create`, usuario ).subscribe( async resp => {
 
         if ( resp['ok'] ) {
 
-          this.guardarToken( resp['token'] );
+          await this.guardarToken( resp['token'] );
 
           resolve(true);
 
@@ -98,6 +109,8 @@ export class UsuarioService {
     this.token = token;
 
     await this.storage.set( 'token', token );
+
+    await this.validaToken();
 
   }
 
