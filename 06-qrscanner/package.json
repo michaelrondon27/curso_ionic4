@@ -32,7 +32,7 @@
     "cordova-android": "8.0.0",
     "cordova-plugin-email-composer": "0.9.2",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-sqlite-storage": "3.2.0",
     "core-js": "^2.5.4",
     "phonegap-plugin-barcodescanner": "8.0.1",
